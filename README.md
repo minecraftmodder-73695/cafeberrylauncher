@@ -1,2 +1,2 @@
-# cafeberrylauncher
-A launcher made for cafeberry
+# Cafeberry Launcher
+A Windows launcher made for Cafeberry.
