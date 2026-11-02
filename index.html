@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="assets/favicon.png">
+	<link rel="preload" as="image" href="assets/button_over.png">
+	<title>Cafeberry Launcher</title>
+	<style>
+		@font-face {
+			font-family: Mojangles;
+			src: url(assets/Mojangles.ttf);
+		}
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 56px;
+			flex-direction: column;
+			gap: 10px;
+		}
+		.center:first-of-type {
+			width: 857px;
+			height: 207px;
+		}
+		.menubutton {
+			background-image: url("assets/button.png");
+			image-rendering: pixelated;
+			width: 450px;
+			height: 40px;
+			border: none;
+			color: white;
+			font-size: 16px;
+			font-family: Mojangles;
+			text-shadow: 1px 1px black;
+		}
+		.menubutton:first-of-type {
+			margin-top: 33px;
+		}
+		.menubutton:hover {
+			background-image: url("assets/button_over.png");
+			color: yellow;
+		}
+		.container {
+			position: fixed;
+			inset: 0;
+			overflow: hidden;
+			--tile-w: calc(100vh * 820 / 144);
+			z-index: -1;
+		}
+		.container:after {
+			animation: mist 120s infinite linear;
+			background: url("assets/tu20s.png") 0 0 / var(--tile-w) 100vh repeat-x;
+			content: "";
+			position: absolute;
+			inset: 0;
+		}
+		@keyframes mist {
+			from { background-position: 0 0; }
+			to   { background-position: calc(var(--tile-w) * -1) 0; }
+		}
+	</style>
+</head>
+<body>
+	<div class="container"></div>
+	<div class="center">
+		<img src="assets/logo.png">
+		<button class="menubutton" onmousedown="buttonclick()" onmouseenter="buttonhover()">Install Game</button>
+		<button class="menubutton" onmousedown="buttonclick()" onmouseenter="buttonhover()">Help & Options</button>
+		<button class="menubutton" onmousedown="buttonclick()" onmouseenter="buttonhover()">Exit Launcher</button>
+	</div>
+	<script>
+		function buttonclick() {
+			var audio = new Audio("assets/press.ogg");
+			audio.play();
+		}
+		function buttonhover() {
+			var audio = new Audio("assets/focus.ogg");
+			audio.preservesPitch = false;
+			audio.playbackRate = 0.9 + Math.random() * 0.2;
+			audio.play();
+		}
+	</script>
+</body>
+</html>
